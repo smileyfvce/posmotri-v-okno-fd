@@ -9,6 +9,9 @@ html {
 }
 
 .page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   inline-size: 1200px;
   block-size: 100%;
   margin: auto;
@@ -52,16 +55,10 @@ ol {
 }
 /* Общий блок */
 
-.page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .content {
   display: grid;
   align-items: end;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 711px 399px;
   grid-template-areas: "search list";
   gap: 30px;
 }
@@ -86,6 +83,7 @@ ol {
 .result__video {
   display: flex;
   object-fit: cover;
+  object-position: center;
   width: 100%;
   height: 100%;
 }
@@ -112,18 +110,18 @@ ol {
 .search-form__label {
   display: flex;
   width: fit-content;
+  align-items: center;
   gap: 5px;
 }
 
 .search-form__textfield {
   text-align: center;
-  width: 225px;
-  height: 27px;
+  min-width: 225px;
+  min-height: 27px;
   font-family: inherit;
   font-size: 18px;
   font-weight: 400;
   background-color: transparent;
-  opacity: 80%;
   color: inherit;
   text-align: start;
   border-top: 1px solid #fff;
@@ -133,8 +131,8 @@ ol {
   appearance: none;
 }
 
-.search-form__label:has(.search-form__textfield:hover) {
-  text-decoration: none;
+.search-form__label:has(.search-form__label-text:hover) {
+  text-decoration: underline;
 }
 
 .search-form__textfield:focus {
@@ -212,6 +210,7 @@ ol {
   font-size: 18px;
   color: inherit;
   text-align: center;
+  height: 34px;
 }
 
 .button:active {
@@ -223,29 +222,28 @@ ol {
   cursor: pointer;
 }
 
-/* индивидуальный стиль кнопки поиска*/
-
-.search-form__submit-button {
-  width: 194px;
-  height: 34px;
-  margin-top: 20px;
-}
-
-.search-form__submit-button:focus {
+.button:focus {
   outline: none;
   outline-offset: none;
 }
 
-.search-form__submit-button:focus-visible {
+.button:focus-visible {
   outline: 1px solid #fff;
   outline-offset: 2px;
+}
+
+/* индивидуальный стиль кнопки поиска*/
+
+.search-form__submit-button {
+  min-width: 194px;
+  margin-top: 20px;
 }
 
 /* Блок с заголовком и списком */
 
 .content__list-container {
   position: relative;
-  width: 399px;
+  max-width: 399px;
   height: 298px;
   overflow: auto;
   padding: 3px 3px 3px 3px;
@@ -268,20 +266,15 @@ ol {
   text-transform: uppercase;
   color: #fff;
   line-height: 95%;
-  padding-left: 3px;
 }
 
 .content__accent {
-  font-family: Oswald, sans-serif;
-  font-weight: 700;
-  font-size: 75px;
-  line-height: 70px;
-  text-transform: uppercase;
   color: #545050;
 }
 
 /* список с видео */
 .content__card-link {
+  display: block;
   text-decoration: none;
   color: #fff;
 }
@@ -298,7 +291,7 @@ ol {
   font-weight: 700;
   font-size: 30px;
   line-height: 100%;
-  width: 193px;
+  max-width: 193px;
   text-transform: uppercase;
   white-space: nowrap;
   overflow: hidden;
@@ -310,7 +303,7 @@ ol {
   font-weight: 400;
   font-size: 18px;
   line-height: 18px;
-  width: 193px;
+  max-width: 193px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -342,17 +335,13 @@ ol {
   font-size: 18px;
 }
 
-.content__list-item {
-  padding: 0px 3px 0px 3px;
-}
-
 /* состояния карточек */
 
 .content__list-item:has(.content__card-link_current) {
   background-color: #545050;
 }
 
-.content__list-item:active {
+.content__card-link:active {
   background-color: #545050;
 }
 
@@ -365,7 +354,7 @@ ol {
   outline: none;
 }
 
-.content__list-item:has(.content__card-link:focus-visible) {
+.content__card-link:focus-visible {
   outline: 1px solid #fff;
 }
 
@@ -376,15 +365,4 @@ ol {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 34px;
-}
-
-.more-button:focus {
-  outline: none;
-  outline-offset: none;
-}
-
-.more-button:focus-visible {
-  outline: 1px solid #fff;
-  outline-offset: 2px;
 }
