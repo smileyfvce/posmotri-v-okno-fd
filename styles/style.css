@@ -13,7 +13,7 @@ html {
   block-size: 100%;
   margin: auto;
   color: #fff;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: "Fira Sans Condensed", sans-serif;
   font-size: 18px;
   background-color: #1b1919;
 }
@@ -38,6 +38,7 @@ ol {
 }
 
 /* Кастомный скроллбар */
+
 .custom-scrollbar::-webkit-scrollbar {
   width: 4px;
 }
@@ -47,5 +48,343 @@ ol {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
+}
+/* Общий блок */
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: grid;
+  align-items: end;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "search list";
+  gap: 30px;
+}
+
+/* Блок с видео и фильтром */
+
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  grid-area: search;
+}
+
+/* контейнер видео*/
+
+.result__video-container {
+  position: relative;
+  width: 711px;
+  height: 386px;
+}
+
+.result__video {
+  display: flex;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* контейнер фильтра поиска */
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  gap: 15px;
+}
+
+.search-form__fieldset {
+  border: none;
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+}
+
+.search-form__label {
+  display: flex;
+  width: fit-content;
+  gap: 5px;
+}
+
+.search-form__textfield {
+  text-align: center;
+  width: 225px;
+  height: 27px;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 400;
+  background-color: transparent;
+  opacity: 80%;
+  color: inherit;
+  text-align: start;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: none;
+  border-right: none;
+  appearance: none;
+}
+
+.search-form__label:has(.search-form__textfield:hover) {
+  text-decoration: none;
+}
+
+.search-form__textfield:focus {
+  outline: none;
+  color: inherit;
+}
+
+.search-form__label:has(.search-form__textfield:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
+.search-form__label:has(.search-form__textfield:active) {
+  outline: none;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+
+/* стилизация чекбоксов*/
+
+.visually-hidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.search-form__checkbox-list {
+  display: flex;
+  gap: 15px;
+}
+
+.search-form__pseudo-checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 19px;
+  height: 19px;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+}
+
+.search-form__label:focus {
+  outline: none;
+  outline-offset: none;
+}
+
+.search-form__label:has(:focus-visible) {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
+.search-form__label:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Общий стиль кнопки*/
+
+.button {
+  border: 1px solid #fff;
+  background-color: transparent;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 18px;
+  color: inherit;
+  text-align: center;
+}
+
+.button:active {
+  background-color: #545050;
+}
+
+.button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* индивидуальный стиль кнопки поиска*/
+
+.search-form__submit-button {
+  width: 194px;
+  height: 34px;
+  margin-top: 20px;
+}
+
+.search-form__submit-button:focus {
+  outline: none;
+  outline-offset: none;
+}
+
+.search-form__submit-button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Блок с заголовком и списком */
+
+.content__list-container {
+  position: relative;
+  width: 399px;
+  height: 298px;
+  overflow: auto;
+  padding: 3px 3px 3px 3px;
+}
+
+.content__details {
+  display: flex;
+  grid-area: list;
+  gap: 26px;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+/* заголовок */
+.title {
+  font-family: Oswald, sans-serif;
+  font-weight: 700;
+  font-size: 75px;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 95%;
+  padding-left: 3px;
+}
+
+.content__accent {
+  font-family: Oswald, sans-serif;
+  font-weight: 700;
+  font-size: 75px;
+  line-height: 70px;
+  text-transform: uppercase;
+  color: #545050;
+}
+
+/* список с видео */
+.content__card-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.content__video-card-description-container {
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.content__video-card-title {
+  font-family: Oswald, sans-serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 100%;
+  width: 193px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content__video-card-description {
+  font-family: Fira Sans Condensed, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
+  width: 193px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content__list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-bottom: 30px;
+}
+
+.content__video-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.content__video-card-thumbnail {
+  width: 194px;
+  height: 103px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.search-form__fieldset-title {
+  font-family: Fira Sans Condensed, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.content__list-item {
+  padding: 0px 3px 0px 3px;
+}
+
+/* состояния карточек */
+
+.content__list-item:has(.content__card-link_current) {
+  background-color: #545050;
+}
+
+.content__list-item:active {
+  background-color: #545050;
+}
+
+.content__card-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.content__card-link:focus {
+  outline: none;
+}
+
+.content__list-item:has(.content__card-link:focus-visible) {
+  outline: 1px solid #fff;
+}
+
+/* индиведуальный стиль кнопки "показать больше"*/
+
+.more-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 34px;
+}
+
+.more-button:focus {
+  outline: none;
+  outline-offset: none;
+}
+
+.more-button:focus-visible {
+  outline: 1px solid #fff;
+  outline-offset: 2px;
 }
