@@ -131,8 +131,9 @@ ol {
   appearance: none;
 }
 
-.search-form__label:has(.search-form__label-text:hover) {
+.search-form__label:hover .search-form__label-text{
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .search-form__textfield:focus {
@@ -193,11 +194,6 @@ ol {
 .search-form__label:has(:focus-visible) {
   outline: 1px solid #fff;
   outline-offset: 2px;
-}
-
-.search-form__label:hover {
-  text-decoration: underline;
-  cursor: pointer;
 }
 
 /* Общий стиль кнопки*/
